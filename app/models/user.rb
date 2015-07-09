@@ -18,6 +18,9 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token, :intial_balance
   attr_reader :password
 
+  has_many :bets_taken, class_name: "Bet", foreign_key: :bet_taker_id
+  has_many :bets_placed, class_name: "PlacedBet", foreign_key: :user_id
+  has_many :bets, through: :bets_placed, source: :bet
 
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
