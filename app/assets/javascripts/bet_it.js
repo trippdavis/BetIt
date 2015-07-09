@@ -4,7 +4,8 @@ window.BetIt = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+    new BetIt.Routers.App({ $rootEl: $("#content") });
+    Backbone.history.start();
   }
 };
 
