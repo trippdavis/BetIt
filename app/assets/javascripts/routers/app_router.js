@@ -6,13 +6,22 @@ BetIt.Routers.App = Backbone.Router.extend({
   },
 
   routes: {
-    "": "betsIndex"
+    "": "betsIndex",
+    "bets/:id": "betShow"
   },
 
   betsIndex: function () {
     this.bets.fetch();
     var view = new BetIt.Views.BetsIndex({
       collection: this.bets
+    });
+    this._swapView(view);
+  },
+
+  betShow: function(id) {
+    var bet = this.bets.getOrFetch(id);
+    var view = new BetIt.Views.BetShow({
+      model: bet
     });
     this._swapView(view);
   },

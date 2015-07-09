@@ -1,6 +1,6 @@
 <h3>Current Bets</h3>
 <ul class="bets-index">
   <% bets.forEach( function (bet) { %>
-    <li class="bets-index-item"><%= bet.escape("title") %></li>
+    <li class="bets-index-item" data-id="<%= bet.get("id") %>"><%= bet.escape("title") %></li>
   <% }) %>
 </ul>
